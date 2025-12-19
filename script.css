@@ -1,0 +1,280 @@
+body { font-family: "Microsoft JhengHei", sans-serif; background-color: #f0f0f0; display: flex; justify-content: center; }
+#game-container { text-align: center; margin-top: 20px; background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+
+/* ...保留你原本的 body 和 container 樣式... */
+
+/* 儀表板總容器 */
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a1a1a;
+    padding: 20px 30px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    /* 增加一個頂部黑線，與標題呼應 */
+    border-top: 4px solid #000; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    color: white;
+}
+
+/* 控制區總容器 */
+.controls {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: #fdfdfd;
+    border-top: 1px solid #eee;
+}
+
+/* 重新開始按鈕：3D 壓感 */
+.btn-modern {
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 0 #000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-modern:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #000;
+}
+
+.btn-modern:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #000;
+}
+
+/* 設定群組佈局 */
+.settings-group {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* 自定義 Toggle 開關 */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+}
+
+.toggle-container input { display: none; }
+
+.toggle-slider {
+    width: 40px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 20px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.toggle-slider:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: 0.3s;
+}
+
+input:checked + .toggle-slider { background: #2e7d32; }
+input:checked + .toggle-slider:before { transform: translateX(20px); }
+
+/* 下拉選單美化 */
+.select-wrapper {
+    position: relative;
+}
+
+#selDifficulty {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    background: white;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#selDifficulty:focus {
+    border-color: #1a1a1a;
+}
+/* 標題強化 */
+/* 標題美化 - 改為純黑質感 */
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #000000; /* 改為純黑 */
+    margin-bottom: 25px;
+    font-weight: 900;
+    /* 加入微細的灰色陰影，讓黑字在白底或深底上更有層次 */
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* 狀態卡片區 */
+.status-card {
+    text-align: left;
+}
+
+.status-card .label {
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* 回合指示小棋子 */
+.stone-mini {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.stone-mini.black { background: radial-gradient(circle at 30% 30%, #555, #000); box-shadow: 0 0 10px #000; }
+.stone-mini.white { background: radial-gradient(circle at 30% 30%, #fff, #bbb); box-shadow: 0 0 10px rgba(255,255,255,0.3); }
+
+/* 計分板區 */
+.score-board {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.05);
+    padding: 8px 15px;
+    border-radius: 12px;
+}
+
+.score-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 65px;
+}
+
+.score-val {
+    font-size: 28px;
+    font-weight: 800;
+    font-family: 'Arial Black', sans-serif;
+    line-height: 1;
+}
+
+.score-tag {
+    font-size: 10px;
+    margin-top: 4px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.score-vs {
+    font-weight: bold;
+    color: #ff4757;
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* 黑白棋分數文字顏色 */
+.score-box.black { color: #fff; }
+.score-box.white { color: #fff; text-shadow: 0 0 5px rgba(255,255,255,0.2); }
+
+#panelBoard {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+    width: 400px;
+    height: 400px;
+    background-color: #2e7d32;
+    border: 8px solid #1b5e20;
+    margin: 20px auto;
+    perspective: 1000px; /* 3D 深度感 */
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    border: 0.5px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cell.valid-hint {
+    background-color: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+}
+
+/* 3D 棋子容器 */
+/* 修改提示數字的樣式，避免干擾 3D */
+.hint-num {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.disc-container {
+    width: 42px;
+    height: 42px;
+    position: relative;
+    transform-style: preserve-3d;
+    /* 確保動畫時間與 JS 的 sleep 配合，0.6s 是不錯的選擇 */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotateY(0deg);
+}
+
+/* 這裡是翻轉的核心：翻轉 180 度 */
+.disc-container.is-white {
+    transform: rotateY(180deg);
+}
+
+.disc-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backface-visibility: hidden; /* 關鍵：翻過去後隱藏 */
+}
+
+.black-face {
+    background: radial-gradient(circle at 30% 30%, #444, #000);
+    z-index: 2; /* 確保黑棋在前面 */
+}
+
+.white-face {
+    background: radial-gradient(circle at 30% 30%, #fff, #ddd);
+    transform: rotateY(180deg); /* 白棋預設背對黑棋 */
+}
