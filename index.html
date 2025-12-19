@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>1122950 - HW10</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>3D Othello</h1>
+        <div class="dashboard">
+            <div class="status-card">
+                <span class="label">NEXT MOVE</span>
+                <div class="player-info">
+                    <div id="player-indicator" class="stone-mini black"></div>
+                    <span id="lblstatus">黑棋回合</span>
+                </div>
+            </div>
+        
+            <div class="score-board">
+                <div class="score-box black">
+                    <span class="score-val" id="score-black">2</span>
+                    <span class="score-tag">BLACK</span>
+                </div>
+                <div class="score-vs">VS</div>
+                <div class="score-box white">
+                    <span class="score-val" id="score-white">2</span>
+                    <span class="score-tag">WHITE</span>
+                </div>
+            </div>
+        </div>
+        <div id="panelBoard"></div>
+        <div class="controls">
+            <button id="btnRestart" class="btn-modern">
+                <span class="btn-icon">↺</span> 重新開始
+            </button>
+            
+            <div class="settings-group">
+                <label class="toggle-container">
+                    <input type="checkbox" id="chkComputerPlay" checked>
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-text">電腦對戰</span>
+                </label>
+        
+                <div class="select-wrapper">
+                    <select id="selDifficulty">
+                        <option value="basic">基本 (貪婪算法)</option>
+                        <option value="advanced" selected>進階 (權重策略)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
